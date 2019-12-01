@@ -15,6 +15,10 @@
     3. 第X种类型特征提取 (Multi)
     4. 第X种回答格式 (Multi)
 
+# 计算流程
+graph
+    Input: string -- 分类 -->  类别X -- 特征提取 --> 类别X的特征 -- 结果生成 --> Ouput: string
+
 # 建立知识库
     最终格式
 
