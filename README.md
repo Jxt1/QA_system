@@ -19,5 +19,8 @@
     最终格式
 
 # 数据库来源
-    * stackoverflow上找问题
+    * stackoverflow上找问题：可参考：
+         stackoverflow上Python相关回答整理翻译https://github.com/wklken/stackoverflow-py-top-qa
     * Pipy网站上建立索引
+
+
