@@ -6,7 +6,7 @@ from AnswerExtractor import AE1,AE2,AE3,AE4,AE5,AE6
 
 def assemble(results):
     # TODO assemble
-    return results[0][0]
+    return results[0][1]
 
 
 def QA_entry(question):
