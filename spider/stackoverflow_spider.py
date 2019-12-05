@@ -5,7 +5,7 @@ import sys
 sys.setrecursionlimit(10000)
 
 data = []
-f = open('./data/stackoverflow_index.txt','w',encoding='utf-8')
+f = open('./data/stackoverflow_index.txt','a+',encoding='utf-8')
 
 cnt = 0
 
@@ -38,6 +38,5 @@ try:
 except Exception as e:
     print(str(e))
 
-pickle.dump(data,open('./data/stackoverflow_index', 'wb') )
+# pickle.dump(data,open('./data/stackoverflow_index', 'wb') )
 
-#question-summary-11227809 > div.summary > div.tags.t-java.t-cçç.t-performance.t-optimization.t-branch-prediction
