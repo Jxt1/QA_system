@@ -2,6 +2,7 @@ from SOUGOU import test as SOUGOUtest
 from question_classifier import classify
 
 from AnswerExtractor import AE1,AE2,AE3,AE4,AE5,AE6
+from spelling_corrector import spell
 
 
 def assemble(results):
@@ -14,6 +15,7 @@ def QA_entry(question):
         This is the entry of the QA system
     """
     
+    question = spell(question)
     print('classifying...')
     Q_type = classify(question)
 
