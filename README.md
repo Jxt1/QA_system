@@ -30,6 +30,7 @@
     可参考：
          stackoverflow上Python相关回答整理翻译 https://github.com/wklken/stackoverflow-py-top-qa
     * Pipy网站上建立索引
+    * https://languageresources.github.io/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/
 
 # START
 ```bash

@@ -1,6 +1,6 @@
-############
-# refer to https://github.com/phatpiglet/autocorrect
-####################
+######################################################
+# refer to https://github.com/phatpiglet/autocorrect #
+######################################################
 
 import re
 from collections import Counter
@@ -81,7 +81,6 @@ class Word(object):
             for e2 in Word(e1).typos():
                 yield e2
 
-
 class Speller:
     def __init__(self, threshold=0, lang='en'):
         self.threshold = threshold
@@ -124,6 +123,38 @@ class Speller:
 spell = Speller(lang='en')
 
 
+def validate():
+    with open('./data/missp.dat.txt') as f:
+        lines = f.readlines()
+        i = 0
+        all_word = 0
+        correct = 0
+        unknown_word = 0
+        while i < lines.__len__() - 1:
+            a = lines[i].strip('\n')
+            i = i + 1
+            print(i, a)
+            assert(a[0]=='$')
+            if a[1:] not in spell.nlp_data:
+                unknown_word = unknown_word + 1
+                while i < lines.__len__():
+                    b = lines[i]
+                    if b[0] == '$':
+                        break
+                    i = i + 1
+                continue
+
+            while i < lines.__len__():
+                b = lines[i].strip('\n')
+                if b[0] == '$':
+                    break
+                if spell(b) == a[1:]:
+                    correct = correct + 1
+                i = i + 1
+                all_word = all_word + 1
+            print('all words: {}, correct: {}, unknown: {}.'.format(all_word, correct, unknown_word))
+
 if __name__ == "__main__":
-    print(spell('how to implemetn matrx multple?'))
+    # print(spell('how to implemetn matrx multple?'))
+    validate()
 
