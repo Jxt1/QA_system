@@ -5,10 +5,14 @@ from AnswerExtractor import AE1,AE2,AE3,AE4,AE5,AE6
 from spelling_corrector import spell
 
 
-def assemble(results):
-    # TODO assemble
-    return results[0][1]
-
+question_definition = {
+    1: "how to do sth",
+    2: "yes or no",
+    3: "why",
+    4: "campare",
+    5: "what, definition",
+    6: "others"
+}
 
 def QA_entry(question):
     """
@@ -18,6 +22,7 @@ def QA_entry(question):
     question = spell(question)
     print('classifying...')
     Q_type = classify(question)
+    print('question type is {}. {}'.format(Q_type,question_definition[Q_type]))
 
     print('SOUGOU processing...')
     SOUGOU_res = SOUGOUtest(question)
@@ -35,3 +40,6 @@ def QA_entry(question):
     answer = assemble([[0.5, SOUGOU_res],R1,R2,R3,R4,R5,R6])
 
     return answer
+
+if __name__ == "__main__":
+    print(QA_entry('how to declare and close InputSteam?'))
