@@ -32,7 +32,9 @@
     * Pipy网站上建立索引
     * https://languageresources.github.io/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/
     
-     ### 注意： 在data/stackoverflow_index.txt.zip 文件中有两行“冗余”可能会影响处理（问题编号476600与476636之间），解压数据删掉这两个问题之间多余的两行即可。
+     ### 注意： 在data/stackoverflow_index.txt.zip 文件中有两行“冗余”可能会影响处理（问题编号476600与476636之间），
+     
+     解压数据删掉这两个问题之间多余的两行即可。
 
 # START
 ```bash
