@@ -43,7 +43,9 @@ def QA_entry(question):
 
     answer_link = 'https://stackoverflow.com/questions/10601304/how-to-declare-and-close-inputsteam'
 
-    (vote, answer_raw, comment) = get_best_answer_on_url(answer_link)
+    response = get_best_answer_on_url(answer_link)
+    assert(response[0] == "Accept answer")
+    answer_raw = response[1][1]
     print('raw answer: {}'.format(answer_raw))
 
     print('<<<AE1 is processing...>>>')
