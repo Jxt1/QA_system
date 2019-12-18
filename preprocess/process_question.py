@@ -8,7 +8,7 @@
 
 
 def process_question(question_str):
-    tmp = list(question_str)
+    tmp = list(question_str.lower())
     i = 0
     for c in tmp:
         if c in '“”\'?"':  # 删掉符号
@@ -29,7 +29,7 @@ question_file_handle = open('data//question.txt', 'w', encoding='utf-8')
 
 # 把文件按行读取进入texts列表，列表元素为行
 with open(file_path, encoding='UTF-8') as file:
-    texts = file.read().lower().splitlines()
+    texts = file.read().splitlines()
     # print(texts)
 all_question_line = []  # 问题行列表
 # 去句首数字
