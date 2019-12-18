@@ -1,3 +1,4 @@
 flask
 requests
 more-itertools
+selenium

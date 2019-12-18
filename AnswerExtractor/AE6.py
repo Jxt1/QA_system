@@ -14,6 +14,8 @@ def answer(question, Q_type=6):
         answer: string
     """
     
+    if Q_type != 6:
+        return [0, '']
     percentage = 1
     answer = 'Sorry, I cannot solve this question'
 

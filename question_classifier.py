@@ -1,7 +1,7 @@
 
 def define_type(s):
     # 定义how关键词类型
-    t1 = ['How', 'What do', 'What does']
+    t1 = ['How', 'What do', 'What does', 'how']
     for each in t1:
         if each in s:
             return 1
