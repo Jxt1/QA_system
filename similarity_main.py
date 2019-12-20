@@ -30,13 +30,27 @@ print d["char"]
 """
 from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
 import json
+import numpy as np
 
-word2id_path = 'data\\word2id.json'
-listofsentence_path = 'data\\listofsentence.json'
+word2id_path = './data/word2id.json'
+listofsentence_path = './data/listofsentence.json'
 # questionlink_path = 'data\\question_link.txt'
 word2id_dict = {}
 listofsentence = []  # 问题集合排序句子的id list
 
+with open(word2id_path, 'r', encoding='utf-8') as word2id_file:
+    print("begin loading word2id dict……")
+    word2id_dict = json.load(fp=word2id_file)
+    print("end loading word2id dict")
+with open(listofsentence_path, 'r', encoding='utf-8') as listofsentence_file:
+    print("begin loading listofsentence.json……")
+    listofsentence = json.load(fp=listofsentence_file)
+    print("end loading listofsentence.json")
+
+lines = []
+with open('./data/stackoverflow_index.txt', 'r', encoding='utf-8') as f:
+    lines = f.readlines()
+    # print(len(lines))
 
 # questionlink = []#问题链接集合
 
@@ -66,27 +80,47 @@ def get_similarity(sentence_str):
 
     list_of_input_sentence.sort()
     print(list_of_input_sentence)
-    # TODO 在 listofsentence 中找到与list_of_input_sentence最相似的向量，并输出相似度以及index
-    print('TODO 在 listofsentence 中找到与list_of_input_sentence最相似的向量(假设是第10个)，并输出相似度以及index')
+
+    l = 0
+    r = len(listofsentence)
+    bound = 0.5
     similarity = 0
     index = 0
+    while l != r:
+        sim = 0
+        mid = (l+r) // 2
+        for item in list_of_input_sentence:
+            if item in listofsentence[mid]:
+                sim = sim + 1
+        print(list_of_input_sentence, mid, listofsentence[mid], sim)
+        similarity = sim / np.math.sqrt(len(list_of_input_sentence)*len(listofsentence[mid]))
+        if  similarity > bound:
+            l = r = mid
+            break
 
-    # index = listofsentence[10][-1]
-    print("此时 index = listofsentence[10][-1]")
+        flag = True # sentence < mid ?
+        for i in range(0, min(len(list_of_input_sentence), len(listofsentence[mid]))):
+            if list_of_input_sentence[i] != listofsentence[mid][i]:
+                flag = list_of_input_sentence[i] < listofsentence[mid][i]
+                break
+
+        if flag:
+            r = mid
+        else:
+            l = mid + 1
+    index = listofsentence[l][-1]
+
     return similarity, index
 
+def similiar(question):
+    similarity, index = get_similarity(process_question(question))
+    link = lines[index*4+1]
+    print('similarity is {}, index is {}, question is : {}'.format(similarity, index, lines[index*4]))
+    return link
 
 if __name__ == '__main__':
-    with open(word2id_path, 'r', encoding='utf-8') as word2id_file:
-        print("begin loading word2id dict……")
-        word2id_dict = json.load(fp=word2id_file)
-        print("end loading word2id dict")
-    with open(listofsentence_path, 'r', encoding='utf-8') as listofsentence_file:
-        print("begin loading listofsentence.json……")
-        listofsentence = json.load(fp=listofsentence_file)
-        print("end loading listofsentence.json")
-
-    text_to_predict = input("Enter your question: ")
-    similarity, i = get_similarity(process_question(text_to_predict))
-    print('the max similarity is:', similarity)
-    print('the index of sentence is:', i)
+    similiar('how to declare and close InputSteam?')
+    # text_to_predict = input("Enter your question: ")
+    # similarity, i = get_similarity(process_question(text_to_predict))
+    # print('the max similarity is:', similarity)
+    # print('the index of sentence is:', i)

@@ -13,13 +13,11 @@ with open('./data/stackoverflow_index.txt', encoding='utf-8') as f:
             question = line[a+1:]
 
             try:
-                Q_type = classify(question) 
+                Q_type = classify(question)
             except Exception as e:
                 Q_type = 6
 
             link = lines[i+1].strip('\n')
-            response = get_best_answer_on_url(link)
-            answer_raw = response[1][1]
             # break
             if Q_type==1:
                 # print(Q_type, question, answer_raw)
@@ -29,6 +27,15 @@ with open('./data/stackoverflow_index.txt', encoding='utf-8') as f:
                 #     print(e)
                 # print('')
 
+                print(i)
+                while True:
+                    response = get_best_answer_on_url(link)
+                    if response != "Access error":
+                        break
+                if response == 'No answer':
+                    continue
+                answer_raw = response[1][1]
+                
                 fout.write(question)
                 for e in answer_raw:
                     if check_in(question, e):
