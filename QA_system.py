@@ -37,6 +37,8 @@ def QA_entry(question):
     Q_type = classify(question)
     print('question type is {}. {}'.format(Q_type, question_definition[Q_type]))
 
+    
+
     print('\n')
     print('<<<SOUGOU processing...>>>')
     SOUGOU_res = SOUGOUtest(question)

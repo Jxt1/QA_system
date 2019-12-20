@@ -2,3 +2,5 @@ flask
 requests
 more-itertools
 selenium
+nltk
+bs4
