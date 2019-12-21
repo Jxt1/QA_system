@@ -42,6 +42,7 @@ def answer(question, Q_type, answer_raw):
     flag = False
     for e in answer_raw:
         if "$code$" in e:
+            e.replace("$code$", "$code$\n")
             if len(e) < 40:
                 e = e.strip("$code$").strip('\n')
                 answer[-1] = answer[-1] + e
@@ -58,14 +59,13 @@ def answer(question, Q_type, answer_raw):
                 else:
                     answer.append(e)
                 flag = False
-            pass
         else:
             if flag:
                 answer[-1] = answer[-1] + e
             else:
                 answer.append('{}. '.format(cnt) + e)
+                cnt = cnt + 1
             flag = False
-            cnt = cnt + 1
         # print(e)
     # print(answer_raw)
 

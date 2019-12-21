@@ -83,7 +83,7 @@ def get_similarity(sentence_str):
 
     l = 0
     r = len(listofsentence)
-    bound = 0.5
+    bound = 0.7
     similarity = 0
     index = 0
     while l != r:
