@@ -5,7 +5,7 @@
 
 from selenium import webdriver
 
-def answer(question, Q_type=6):
+def answer(question, Q_type=6, answer_raw=''):
     """
     Input :
         question: string

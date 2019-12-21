@@ -3,7 +3,7 @@
 # xxx
 #############################################
 
-def answer(question, Q_type=6):
+def answer(question, Q_type=6, answer_raw=''):
     """
     Input :
         question: string
@@ -19,7 +19,6 @@ def answer(question, Q_type=6):
     ############################################
 
     percentage = 0
-    answer = ''
 
-    return [percentage, answer]
+    return [percentage, answer_raw]
 

@@ -68,10 +68,10 @@ def QA_entry(question):
     R2 = AE2.answer(question, Q_type, answer_raw)
     print('\n')
 
-    R3 = AE3.answer(question, Q_type)
-    R4 = AE4.answer(question, Q_type)
-    R5 = AE5.answer(question, Q_type)
-    R6 = AE6.answer(question, Q_type)
+    R3 = AE3.answer(question, Q_type, answer_raw)
+    R4 = AE4.answer(question, Q_type, answer_raw)
+    R5 = AE5.answer(question, Q_type, answer_raw)
+    R6 = AE6.answer(question, Q_type, answer_raw)
     R7 = AE7.answer(question, Q_type)
 
     print('<<<assembling...>>>')
