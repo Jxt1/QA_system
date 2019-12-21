@@ -61,4 +61,3 @@ if __name__ == "__main__":
     print(Hyon('https://stackoverflow.com/questions/3437059/does-python-have-a-string-contains-substring-method'))
     print(Hyon('https://stackoverflow.com/questions/588004/is-floating-point-math-broken'))
 
-

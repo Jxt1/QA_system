@@ -41,6 +41,8 @@ def answer(question, Q_type, answer_raw):
 
     flag = False
     for e in answer_raw:
+        if not check_in(question, e):
+            continue
         if "$code$" in e:
             e.replace("$code$", "$code$\n")
             if len(e) < 40:
