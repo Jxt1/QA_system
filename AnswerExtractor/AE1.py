@@ -39,18 +39,34 @@ def answer(question, Q_type, answer_raw):
     answer = []
     cnt = 1
 
+    flag = False
     for e in answer_raw:
         if "$code$" in e:
-            if cnt == 1:
-                answer.append('{}. '.format(cnt) + e)
+            if len(e) < 40:
+                e = e.strip("$code$").strip('\n')
+                answer[-1] = answer[-1] + e
+                flag = True
+            elif cnt == 1:
+                if flag:
+                    answer[-1] = answer[-1] + e
+                else:
+                    answer.append('{}. '.format(cnt) + e)
+                flag = False
             else:
-                answer.append(e)
-            print(e)
+                if flag:
+                    answer[-1] = answer[-1] + e
+                else:
+                    answer.append(e)
+                flag = False
             pass
         else:
-            answer.append('{}. '.format(cnt) + e)
-            print(e)
+            if flag:
+                answer[-1] = answer[-1] + e
+            else:
+                answer.append('{}. '.format(cnt) + e)
+            flag = False
             cnt = cnt + 1
+        # print(e)
     # print(answer_raw)
 
     return [1, '\n'.join(answer)]

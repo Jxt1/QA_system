@@ -4,7 +4,8 @@ from question_classifier import classify
 from AnswerExtractor import AE1,AE2,AE3,AE4,AE5,AE6
 from spelling_corrector import spell
 from get_answers import get_best_answer_on_url
-
+from similarity_main import similiar
+from utils import process_question
 
 question_definition = {
     1: "how to do sth",
@@ -37,17 +38,26 @@ def QA_entry(question):
     Q_type = classify(question)
     print('question type is {}. {}'.format(Q_type, question_definition[Q_type]))
 
-    
 
     print('\n')
     print('<<<SOUGOU processing...>>>')
-    SOUGOU_res = SOUGOUtest(question)
+    # SOUGOU_res = SOUGOUtest(question)
 
-    answer_link = 'https://stackoverflow.com/questions/10601304/how-to-declare-and-close-inputsteam'
+    print('\n')
+    print('<<<looking up similar question...>>>')
+    answer_link = similiar(process_question(question))
+    print('answer link is {}'.format(answer_link))
+
 
     response = get_best_answer_on_url(answer_link)
-    assert(response[0] == "Accept answer")
-    answer_raw = response[1][1]
+    # assert()
+    if response == "Access error":
+        answer_raw = ['Sorry, I have some problem in finding an answer']
+    elif response[0] == "No answer":
+        answer_raw = ['Sorry, I cannot answer the question']
+    else:
+        answer_raw = response[1][1]
+
     print('raw answer: {}'.format(answer_raw))
 
     print('<<<AE1 is processing...>>>')
@@ -55,7 +65,7 @@ def QA_entry(question):
     print('\n')
 
     print('<<<AE2 is processing...>>>')
-    R2 = AE2.answer(question, Q_type)
+    R2 = AE2.answer(question, Q_type, answer_raw)
     print('\n')
 
     R3 = AE3.answer(question, Q_type)
@@ -64,10 +74,16 @@ def QA_entry(question):
     R6 = AE6.answer(question, Q_type)
 
     print('<<<assembling...>>>')
-    answer = assemble([[0.5, SOUGOU_res],R1,R2,R3,R4,R5,R6])
+    answer = assemble([R1,R2,R3,R4,R5,R6])
+    # answer = assemble([[0.5, SOUGOU_res],R1,R2,R3,R4,R5,R6])
     print('\n')
 
     return answer
 
 if __name__ == "__main__":
-    print(QA_entry('how to declare and close InputSteam?'))
+    print(QA_entry('How do I redirect to another webpage?')) # Type 1: how
+
+    print(QA_entry('how to declare and close InputSteam?')) # Type 1: how
+
+    print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
+

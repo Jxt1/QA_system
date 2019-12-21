@@ -114,7 +114,7 @@ def get_similarity(sentence_str):
 
 def similiar(question):
     similarity, index = get_similarity(process_question(question))
-    link = lines[index*4+1]
+    link = lines[index*4+1].strip('\n')
     print('similarity is {}, index is {}, question is : {}'.format(similarity, index, lines[index*4]))
     return link
 
