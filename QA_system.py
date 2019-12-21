@@ -1,7 +1,7 @@
 from SOUGOU import test as SOUGOUtest
 from question_classifier import classify
 
-from AnswerExtractor import AE1,AE2,AE3,AE4,AE5,AE6
+from AnswerExtractor import AE1,AE2,AE3,AE4,AE5,AE6,AE7
 from spelling_corrector import spell
 from get_answers import get_best_answer_on_url
 from similarity_main import similiar
@@ -72,6 +72,7 @@ def QA_entry(question):
     R4 = AE4.answer(question, Q_type)
     R5 = AE5.answer(question, Q_type)
     R6 = AE6.answer(question, Q_type)
+    R7 = AE7.answer(question, Q_type)
 
     print('<<<assembling...>>>')
     answer = assemble([R1,R2,R3,R4,R5,R6])
@@ -88,4 +89,3 @@ if __name__ == "__main__":
     print(QA_entry('how to set a timer in Python?')) # Type 1: how (not in db)
 
     print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
-
