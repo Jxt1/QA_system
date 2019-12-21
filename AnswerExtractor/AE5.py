@@ -18,4 +18,3 @@ def answer(question, Q_type=5, answer_raw=''):
         return [0, '']
     percentage = 0
     return [percentage, answer_raw]
-
