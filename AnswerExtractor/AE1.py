@@ -3,7 +3,6 @@
 # jxt
 #############################################
 
-
 def out_code(codes):
     print('\n{}\n'.format(codes))
 
@@ -13,7 +12,6 @@ def check_in(question, answer):
         if word in question:
             return True
     return False
-
 
 def answer(question, Q_type, answer_raw):
     """

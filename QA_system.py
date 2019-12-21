@@ -40,7 +40,6 @@ def QA_entry(question):
     Q_type = classify(question)
     print('question type is {}. {}'.format(Q_type, question_definition[Q_type]))
 
-
     print('\n')
     print('<<<SOUGOU processing...>>>')
     # SOUGOU_res = SOUGOUtest(question)
@@ -49,7 +48,6 @@ def QA_entry(question):
     print('<<<looking up similar question...>>>')
     answer_link = similiar(process_question(question))
     print('answer link is {}'.format(answer_link))
-
 
     response = get_best_answer_on_url(answer_link)
     # assert()
