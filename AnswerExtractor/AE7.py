@@ -1,9 +1,9 @@
 #############################################
-# Type 6: Others
+# Type 7: Others
 # jxt
 #############################################
 
-def answer(question, Q_type=6):
+def answer(question, Q_type=7):
     """
     Input :
         question: string
@@ -14,10 +14,10 @@ def answer(question, Q_type=6):
         answer: string
     """
     
-    if Q_type != 6:
-        return [0, '']
-    percentage = 0
-    answer = ''
+    if Q_type != 7:
+        return [0.2, '']
+    percentage = 1
+    answer = 'Sorry, I cannot solve this question'
 
     return [percentage, answer]
 
