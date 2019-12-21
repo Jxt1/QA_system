@@ -10,7 +10,7 @@ def define_type(s):
             return 4
 
     # 定义why关键词类型
-    t3 = ['Why ', 'why ', 'reason ', 'reasoning ']
+    t3 = ['Why ', 'why ', 'reason ', 'reasons ', 'reasoning ']
     for each in t3:
         if each in s:
             return 3
