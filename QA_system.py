@@ -33,13 +33,12 @@ def QA_entry(question):
     """
 
     question = ques_str_op(question)
-    
+
     print('\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"')
     question = spell(question)
     print('<<<classifying...>>>')
     Q_type = classify(question)
     print('question type is {}. {}'.format(Q_type, question_definition[Q_type]))
-
 
     print('\n')
     print('<<<SOUGOU processing...>>>')
@@ -49,7 +48,6 @@ def QA_entry(question):
     print('<<<looking up similar question...>>>')
     answer_link = similiar(process_question(question))
     print('answer link is {}'.format(answer_link))
-
 
     response = get_best_answer_on_url(answer_link)
     # assert()
@@ -84,7 +82,7 @@ def QA_entry(question):
     return answer
 
 if __name__ == "__main__":
-    print(QA_entry('How do I redirect to another webpage?')) # Type 1: how
+    print(QA_entry('How do I undo \'git add\' before commit?')) # Type 1: how
 
     # print(QA_entry('how to declare and close InputSteam?')) # Type 1: how
 

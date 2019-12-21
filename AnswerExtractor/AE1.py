@@ -3,7 +3,6 @@
 # jxt
 #############################################
 
-
 def out_code(codes):
     print('\n{}\n'.format(codes))
 
@@ -13,7 +12,6 @@ def check_in(question, answer):
         if word in question:
             return True
     return False
-
 
 def answer(question, Q_type, answer_raw):
     """
@@ -39,35 +37,23 @@ def answer(question, Q_type, answer_raw):
     answer = []
     cnt = 1
 
-    flag = False
     for e in answer_raw:
-        if not check_in(question, e):
-            continue
-        if "$code$" in e:
-            e.replace("$code$", "$code$\n")
-            if len(e) < 40:
-                e = e.strip("$code$").strip('\n')
-                answer[-1] = answer[-1] + e
-                flag = True
-            elif cnt == 1:
-                if flag:
-                    answer[-1] = answer[-1] + e
+        for sentence in [x for x in e.split('. ') if x != '']:
+            sentence = sentence.strip('\n')
+
+            if "$code$" in sentence:
+                if cnt == 1:
+                    answer.append('{}. '.format(cnt) + sentence)
+                elif len(sentence) < 40:
+                    sentence = sentence[6:].strip('\n')
+                    answer[-1] = answer[-1] + '"{}"'.format(sentence)
                 else:
-                    answer.append('{}. '.format(cnt) + e)
-                flag = False
+                    answer.append(sentence)
             else:
-                if flag:
-                    answer[-1] = answer[-1] + e
-                else:
-                    answer.append(e)
-                flag = False
-        else:
-            if flag:
-                answer[-1] = answer[-1] + e
-            else:
-                answer.append('{}. '.format(cnt) + e)
+                if not check_in(question, sentence):
+                    continue
+                answer.append('{}. '.format(cnt) + sentence)
                 cnt = cnt + 1
-            flag = False
         # print(e)
     # print(answer_raw)
 
