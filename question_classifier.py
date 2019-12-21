@@ -59,4 +59,3 @@ def classify(question):
 if __name__ == "__main__":
     classify('how to do?')
     pass
-

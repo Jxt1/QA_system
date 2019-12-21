@@ -5,7 +5,7 @@ from AnswerExtractor import AE1,AE2,AE3,AE4,AE5,AE6,AE7
 from spelling_corrector import spell
 from get_answers import get_best_answer_on_url
 from similarity_main import similiar
-from utils import process_question
+from utils import process_question, ques_str_op
 
 question_definition = {
     1: "how to do sth",
@@ -31,6 +31,8 @@ def QA_entry(question):
     """
         This is the entry of the QA system
     """
+
+    question = ques_str_op(question)
     
     print('\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"')
     question = spell(question)
@@ -84,8 +86,8 @@ def QA_entry(question):
 if __name__ == "__main__":
     print(QA_entry('How do I redirect to another webpage?')) # Type 1: how
 
-    print(QA_entry('how to declare and close InputSteam?')) # Type 1: how
+    # print(QA_entry('how to declare and close InputSteam?')) # Type 1: how
 
-    print(QA_entry('how to set a timer in Python?')) # Type 1: how (not in db)
+    # print(QA_entry('how to set a timer in Python?')) # Type 1: how (not in db)
 
-    print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
+    # print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
