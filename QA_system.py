@@ -91,3 +91,4 @@ if __name__ == "__main__":
     # print(QA_entry('how to set a timer in Python?')) # Type 1: how (not in db)
 
     # print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
+
