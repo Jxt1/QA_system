@@ -5,3 +5,4 @@ selenium
 nltk
 bs4
 lxml
+sklearn
