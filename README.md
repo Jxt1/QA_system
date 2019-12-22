@@ -12,6 +12,17 @@ $ pip install -r requirements.txt
 $ python server.py
 ```
 
+输入例子：
+```bash
+How Can I format a nuber into a string with leading zeros
+Can I create a column of nvarchar(MAX) using FluentMigrator?
+Why do table names start with "dbo" in SQL Server
+What is the difference between map and collect in Ruby?
+exactly what does env do in Bash?
+What is the optimal length for user password salt?
+Alarm Manager Example
+```
+
 # 答案类型
     1. How? || Do something.
     2. Yes or No
