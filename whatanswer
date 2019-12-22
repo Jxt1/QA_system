@@ -1,0 +1,56 @@
+from selenium import webdriver
+
+import　sys , os
+
+
+
+what_answer(question):
+
+        question_key = formation(question)
+        opt= webdriver.ChromeOptions()
+        # opt.add_argument('headless')
+
+        # 把chrome设置成无界面模式，不论windows还是linux都可以，自动适配对应参数
+        opt.set_headless()
+        browser = webdriver.Chrome(options=opt)
+
+        #设置浏览器需要打开的url
+        url = "https:/baike.baidu.com"
+        browser.get(url)
+
+        #在百度搜索框中输入关键字"python"
+        input= browser.find_element_by_id("query")
+        input.send_keys("python")]
+
+        browser.find_element_by_id("search").click()
+
+        text = browser.find_element_by_class_name("para").text
+        str = "."
+        result_str = text[:text.index(str)]+"."
+        #关闭浏览器
+        browser.quit()
+        #print(result_str)
+        return result_str
+
+def formation(question):
+    pre_form = ["What is", "what is", "which is", "Which is"]
+    for substr in pre_form:
+        if substr in question:
+            question = delete_substr(question,substr)
+    strip(question.punctuation)
+    question_key = question
+    return question_key　
+
+
+def delete_substr(in_str, in_substr):
+  start_loc = in_str.find(in_substr)
+  in_str, in_substr = list(in_str), list(in_substr)
+  [len_str, len_substr] = len(in_str), len(in_substr)
+  res_str = in_str[:start_loc]
+  for i in range(start_loc + len_substr, len_str):
+    res_str.append(in_str[i])
+  res = ''.join(res_str)
+  return res
+
+
+print(what_answer( "what is C++?"))
