@@ -39,6 +39,7 @@ def get_best_answer_on_url(url):
 
         votes = ans.find('div', {'class' : 'js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center'})
         text = ans.find('div', {'class' : 'post-text'})
+        raw = text
         comments = ans.find_all('span', {'class' : 'comment-copy'})
 
         text = str(text)
@@ -61,7 +62,7 @@ def get_best_answer_on_url(url):
             comment = comment.replace('&lt;', '<')
             comments[i] = comment
             
-        return accepted and "Accept answer" or "Votes answer", (votes['data-value'], text, comments)
+        return accepted and "Accept answer" or "Votes answer", (votes['data-value'], text, comments, raw)
 
 if __name__ == "__main__":
     url_invalid = ""
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     if response == "No answer" or response == "Access error":
         print(response)
     else:
-        votes, ans, comments = response[1]
+        votes, ans, comments, raw = response[1]
         print(ans)
         print(comments)
 
@@ -81,7 +82,7 @@ if __name__ == "__main__":
     if response == "No answer" or response == "Access error":
         print(response)
     else:
-        votes, ans, comments = response[1]
+        votes, ans, comments, raw = response[1]
         print(ans)
         print(comments)
         
@@ -90,7 +91,7 @@ if __name__ == "__main__":
         print(response)
     else:
         print(response[0])
-        votes, ans, comments = response[1]
+        votes, ans, comments, raw = response[1]
         print(ans)
         print(comments)
         
@@ -99,6 +100,6 @@ if __name__ == "__main__":
         print(response)
     else:
         print(response[0])
-        votes, ans, comments = response[1]
+        votes, ans, comments, raw = response[1]
         print(ans)
         print(comments)

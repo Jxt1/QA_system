@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Markup
 from QA_system import QA_entry
 
 
@@ -14,6 +14,10 @@ def home():
 def get_answer():
     question = request.form['question']
     answer = QA_entry(question)
+
+    # answer = Markup(answer)
+    print(answer)
+    # answer = Markup(answer).striptags()
     return render_template('home.html', question=question, answer=answer)
 
 

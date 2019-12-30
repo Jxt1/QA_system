@@ -23,6 +23,14 @@ What is the optimal length for user password salt?
 Alarm Manager Example
 ```
 
+如果缺少english.pickle
+```bash
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+```
+然后在All Packages中选择punkt下载。
+
 # 答案类型
     1. How? || Do something.
     2. Yes or No

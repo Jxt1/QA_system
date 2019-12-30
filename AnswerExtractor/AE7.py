@@ -38,16 +38,12 @@ def answer(question, Q_type=7):
         strhtml = requests.get(url)        #Get方式获取网页数据
         
         soup=BeautifulSoup(str(strhtml.content).encode('utf-8',),'lxml')
-        print('abstract answer...')
-        for i, child in enumerate(soup.body.find(id='questions').children):
-            if child.find('h3') == -1:
-                continue
+        child = soup.find('div', {'class' : 'question-summary search-result'})
 
-            link = 'https://stackoverflow.com' + child.h3.a['href']
-            print(link)
-            answer = get_best_answer_on_url(link)
-
-            break
+        link = 'https://stackoverflow.com' + child.h3.a['href']
+        print(link)
+        answer = get_best_answer_on_url(link)
+        # print(answer)
 
     except Exception as e:
         print(e)

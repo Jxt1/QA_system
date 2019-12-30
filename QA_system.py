@@ -13,7 +13,8 @@ question_definition = {
     3: "why",
     4: "campare",
     5: "what, definition",
-    6: "others"
+    6: "what",
+    7: "others"
 }
 
 def assemble(results):
@@ -51,6 +52,7 @@ def QA_entry(question):
 
     response = get_best_answer_on_url(answer_link)
     # assert()
+    answer_html = ''
     if response == "Access error":
         answer_raw = ['Sorry, I have some problem in finding an answer']
     elif response[0] == "No answer":
@@ -82,11 +84,11 @@ def QA_entry(question):
     return answer
 
 if __name__ == "__main__":
-    print(QA_entry('How do I undo \'git add\' before commit?')) # Type 1: how
+    print(QA_entry('grep a file, but show several surrounding lines?'))
+    # print(QA_entry('How do I undo \'git add\' before commit?')) # Type 1: how
 
     # print(QA_entry('how to declare and close InputSteam?')) # Type 1: how
 
     # print(QA_entry('how to set a timer in Python?')) # Type 1: how (not in db)
 
     # print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
-
