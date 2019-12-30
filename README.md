@@ -29,7 +29,6 @@ import nltk
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 ```
-然后在All Packages中选择punkt下载。
 
 # 答案类型
     1. How? || Do something.
