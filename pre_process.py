@@ -49,5 +49,3 @@ def delete_substr(in_str, in_substr):
   return res
 
 print(ques_str_op("In SQL, what's the difference/between count(column) and count(*)?"))
-
-
