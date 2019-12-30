@@ -37,6 +37,7 @@ def QA_entry(question):
 
     print('\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"')
     question = spell(question)
+    print('after spelling {}'.format(question))
     print('<<<classifying...>>>')
     Q_type = classify(question)
     print('question type is {}. {}'.format(Q_type, question_definition[Q_type]))
@@ -84,7 +85,9 @@ def QA_entry(question):
     return answer
 
 if __name__ == "__main__":
-    print(QA_entry('grep a file, but show several surrounding lines?'))
+    print(QA_entry("What is the correct JSON content type?"))
+
+    # print(QA_entry('grep a file, but show several surrounding lines?'))
     # print(QA_entry('How do I undo \'git add\' before commit?')) # Type 1: how
 
     # print(QA_entry('how to declare and close InputSteam?')) # Type 1: how

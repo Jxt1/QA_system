@@ -21,6 +21,8 @@ def answer(question, Q_type=6, answer_raw=''):
     if Q_type != 6:
         return [0, '']
 
+    return [0.8, answer_raw]
+
     question_str = ["what is","which is","What is","Which is"]
     count =0
     for i in question_str:
