@@ -69,7 +69,7 @@ def process_question(question_str):
     return ''.join(tmp)
 
 
-def get_similarity(sentence_str):
+def get_similarityDC(sentence_str):
     list_of_input_sentence = []
     for word in sentence_str.split():
         if word not in ENGLISH_STOP_WORDS:
@@ -109,6 +109,35 @@ def get_similarity(sentence_str):
         else:
             l = mid + 1
     index = listofsentence[l][-1]
+
+    return similarity, index
+    
+def get_similarity(sentence_str):
+    list_of_input_sentence = []
+    for word in sentence_str.split():
+        if word not in ENGLISH_STOP_WORDS:
+            try:
+                list_of_input_sentence.append(word2id_dict[word])
+            except NameError or KeyError:
+                list_of_input_sentence.append(len(listofsentence) + 1)
+
+    list_of_input_sentence.sort()
+    print(list_of_input_sentence)
+
+    similarity = 0
+    index = 0
+    for i in range(0, len(listofsentence)):
+        sim = 0
+        for item in list_of_input_sentence:
+            if item in listofsentence[i]:
+                sim = sim + 1
+        similarity_tmp = sim / np.math.sqrt(len(list_of_input_sentence)*len(listofsentence[i]))
+        if  similarity_tmp > similarity:
+            index = i
+            similarity = similarity_tmp
+            print(list_of_input_sentence, i, listofsentence[i], sim)
+
+    index = listofsentence[index][-1]
 
     return similarity, index
 
