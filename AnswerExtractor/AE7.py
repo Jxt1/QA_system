@@ -3,8 +3,14 @@
 # jxt
 #############################################
 
-from ..utils import process_question
-from ..get_answers import get_best_answer_on_url
+import sys
+sys.path.append('..')
+
+import requests
+from bs4 import BeautifulSoup
+import pickle
+from get_answers import get_best_answer_on_url
+from utils import process_question
 
 def answer(question, Q_type=7):
     """
@@ -27,14 +33,18 @@ def answer(question, Q_type=7):
 
     try:
         url = 'https://stackoverflow.com/search?q={}'.format('+'.join(question.split(' ')))
+        print(url)
         
         strhtml = requests.get(url)        #Get方式获取网页数据
+        
         soup=BeautifulSoup(str(strhtml.content).encode('utf-8',),'lxml')
+        print('abstract answer...')
         for i, child in enumerate(soup.body.find(id='questions').children):
             if child.find('h3') == -1:
                 continue
 
             link = 'https://stackoverflow.com' + child.h3.a['href']
+            print(link)
             answer = get_best_answer_on_url(link)
 
             break
