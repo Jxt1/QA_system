@@ -16,5 +16,5 @@ def answer(question, Q_type=5, answer_raw=''):
     
     if Q_type != 5:
         return [0, '']
-    percentage = 0
-    return [percentage, answer_raw]
+    percentage = 1
+    return [percentage, '\n'.join(answer_raw)]

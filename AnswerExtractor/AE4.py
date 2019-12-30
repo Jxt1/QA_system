@@ -18,7 +18,9 @@ def answer(question, Q_type=6, answer_raw=''):
     # TODO
     ############################################
 
-    percentage = 0
+    if Q_type != 4:
+        return [0, '']
+    percentage = 1
 
-    return [percentage, answer_raw]
+    return [percentage, '\n'.join(answer_raw)]
 
