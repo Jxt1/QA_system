@@ -6,7 +6,7 @@
 解压data/stackoverflow_index.txt.zip文件。
 注意： 在data/stackoverflow_index.txt文件中有两行“冗余”可能会影响处理（问题编号476600与476636之间），
 
-解压数据删掉这两个问题之间多余的两行即可。
+解压数据删掉这两个问题之间多余的两行(1906401行与1906402行)即可。
 ```bash
 $ pip install -r requirements.txt
 $ python server.py
