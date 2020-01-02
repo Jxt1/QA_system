@@ -29,7 +29,6 @@ def answer(question, Q_type=7):
     question = process_question(question)
         
     percentage = 1
-    answer = 'Sorry, I cannot solve this question'
 
     try:
         url = 'https://stackoverflow.com/search?q={}'.format('+'.join(question.split(' ')))
@@ -48,7 +47,7 @@ def answer(question, Q_type=7):
     except Exception as e:
         print(e)
 
-    return [percentage, answer]
+    return [percentage, 'Sorry, I cannot solve this question.\n\n\n' + answer]
 
 if __name__ == "__main__":
     answer('how to use')
