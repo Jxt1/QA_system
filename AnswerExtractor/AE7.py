@@ -42,12 +42,21 @@ def answer(question, Q_type=7):
 
         link = 'https://stackoverflow.com' + child.h3.a['href']
         print(link)
-        answer = get_best_answer_on_url(link)
+
+        response = get_best_answer_on_url(link)
+        if response == "Access error":
+            answer_raw = ['Sorry, I have some problem in finding an answer']
+        elif response[0] == "No answer":
+            answer_raw = ['Sorry, I cannot answer the question']
+        else:
+            answer_raw = response[1][1]
+
+        answer = answer_raw
         # print(answer)
 
     except Exception as e:
         print(e)
-
+    print(type(answer))
     return [percentage, 'Sorry, I cannot solve this question.\n\n\n' + ''.join(answer)]
 
 if __name__ == "__main__":

@@ -85,7 +85,7 @@ def QA_entry(question):
     return question, answer
 
 if __name__ == "__main__":
-    print(QA_entry("What is the correct JSON content type?"))
+    # print(QA_entry("What is the correct JSON content type?"))
 
     # print(QA_entry('grep a file, but show several surrounding lines?'))
     # print(QA_entry('How do I undo \'git add\' before commit?')) # Type 1: how
@@ -94,4 +94,4 @@ if __name__ == "__main__":
 
     # print(QA_entry('how to set a timer in Python?')) # Type 1: how (not in db)
 
-    # print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
+    print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
