@@ -82,7 +82,7 @@ def QA_entry(question):
     # answer = assemble([[0.5, SOUGOU_res],R1,R2,R3,R4,R5,R6])
     print('\n')
 
-    return answer
+    return question, answer
 
 if __name__ == "__main__":
     print(QA_entry("What is the correct JSON content type?"))

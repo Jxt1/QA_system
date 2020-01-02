@@ -13,7 +13,7 @@ def home():
 @app.route('/', methods=['POST'])
 def get_answer():
     question = request.form['question']
-    answer = QA_entry(question)
+    question, answer = QA_entry(question)
 
     # answer = Markup(answer)
     print(answer)
