@@ -84,7 +84,8 @@ class Word(object):
 class Speller:
     def __init__(self, threshold=0, lang='en'):
         self.threshold = threshold
-        words_file = os.path.join(PATH, 'data/word_count.json')
+        words_file = os.path.join(PATH, 'data/words.json')
+        # words_file = os.path.join(PATH, 'data/word_count.json')
         fp = open(file=words_file)
         self.nlp_data = json.load(fp)
         fp.close()
