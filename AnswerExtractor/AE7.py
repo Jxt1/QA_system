@@ -47,7 +47,7 @@ def answer(question, Q_type=7):
     except Exception as e:
         print(e)
 
-    return [percentage, 'Sorry, I cannot solve this question.\n\n\n' + answer]
+    return [percentage, 'Sorry, I cannot solve this question.\n\n\n' + ''.join(answer)]
 
 if __name__ == "__main__":
     answer('how to use')
