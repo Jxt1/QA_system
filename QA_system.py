@@ -35,6 +35,7 @@ def QA_entry(question):
 
     question = ques_str_op(question)
 
+
     print('\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"')
     question = spell(question)
     print('after spelling {}'.format(question))
@@ -93,5 +94,5 @@ if __name__ == "__main__":
     # print(QA_entry('how to declare and close InputSteam?')) # Type 1: how
 
     # print(QA_entry('how to set a timer in Python?')) # Type 1: how (not in db)
-
-    print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
+    print(QA_entry('Java Mongo indene to get last inserted record'))
+    # print(QA_entry('Does Python have a string \'contains\' substring method?')) # Type 2: y/n
