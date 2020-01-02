@@ -19,6 +19,7 @@ def answer(question, Q_type=2, answer_raw=''):
     
     if Q_type != 2 or answer_raw == '':
         return [0, '']
+    print(answer_raw)
     
     percentage = 1
     answer_list = handle_yes_or_no(answer_raw)
@@ -47,14 +48,13 @@ def Hyon(question_url):
 # 输入：原始答案(list)
 # 输出：答案(list)
 def handle_yes_or_no(ans):
-    ans[0] = ans[0].strip()
-    if re.match('No[.,; ]', ans[0]):
-        return 'No'
-    elif re.match('Yes[.,; ]', ans[0]):
-        return ans
-    else:
-        ans.insert(0, 'Yes. ')
-        return ans
+    for item in ans:
+        if re.match('No[.,; ]', item):
+            return 'No'
+        elif re.match('Yes[.,; ]', item):
+            return ans
+    ans.insert(0, 'Yes. ')
+    return ans
 
 if __name__ == "__main__":   
     print(Hyon('https://stackoverflow.com/questions/244777/can-comments-be-used-in-json'))

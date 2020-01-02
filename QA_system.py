@@ -78,7 +78,7 @@ def QA_entry(question):
     R7 = AE7.answer(question, Q_type)
 
     print('<<<assembling...>>>')
-    answer = assemble([R1,R2,R3,R4,R5,R6])
+    answer = assemble([R1,R2,R3,R4,R5,R6,R7])
     # answer = assemble([[0.5, SOUGOU_res],R1,R2,R3,R4,R5,R6])
     print('\n')
 
