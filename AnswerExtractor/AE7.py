@@ -24,7 +24,7 @@ def answer(question, Q_type=7):
     """
 
     if Q_type != 7:
-        return [0.2, '']
+        return [0.2, 'Sorry, I cannot solve this question.']
     
     question = process_question(question)
         
