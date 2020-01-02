@@ -29,6 +29,7 @@ def answer(question, Q_type=7):
     question = process_question(question)
         
     percentage = 1
+    answer = []
 
     try:
         url = 'https://stackoverflow.com/search?q={}'.format('+'.join(question.split(' ')))
